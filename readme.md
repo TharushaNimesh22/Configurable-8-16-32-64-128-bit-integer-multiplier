@@ -1,4 +1,4 @@
-# Configurable Integer Multiplier — 8/16/32/64/128-bit
+# Configurable Integer Multiplier — 8/16/32/64/128 bit
 ## Overview
 
 This project implements a configurable unsigned integer multiplier supporting operand widths of 8, 16, 32, 64, and 128 bits.
@@ -9,12 +9,12 @@ The project focuses on understanding how architectural choices affect the result
 
 ## Project Objectives
 * Design a configurable multiplier supporting 8/16/32/64/128-bit operands.
-Explore different architectures for hardware multiplication.
-Implement the architectures at RTL level rather than relying entirely on the synthesis tool's inferred multiplier.
-Compare the architectures based on:
-Latency
-Critical-path delay
-Maximum operating frequency
-Area/resource utilization
-Investigate how the selected architecture affects synthesis and implementation results.
-Identify suitable architectures for different operand widths and performance requirements
+* Explore different architectures for hardware multiplication.
+* Implement the architectures at RTL level rather than relying entirely on the synthesis tool's inferred multiplier.
+* Compare the architectures based on:
+  * Latency
+  * Critical-path delay
+  * Maximum operating frequency
+  * Area/resource utilization
+* Investigate how the selected architecture affects synthesis and implementation results.
+
