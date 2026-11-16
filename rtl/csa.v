@@ -1,9 +1,3 @@
-// ============================================================================
-// Carry-Save Adder (3:2 compressor) - building block for architectures 3-6
-//   Search terms : "carry save adder", "3:2 compressor", "full adder array"
-// Adds THREE numbers and returns TWO numbers (sum, carry) with sum+carry = x+y+z.
-// Every bit is an independent full adder -> no carry ripples, constant delay.
-// ============================================================================
 module csa #(
     parameter W = 16
 )(
