@@ -1,14 +1,4 @@
-// ============================================================================
-// Radix-4 Booth Partial-Product Generator (used by architectures 4, 5, 6)
-//   Search terms : "radix-4 Booth encoding", "Booth partial product generation"
-// Produces WIDTH/2+1 Booth rows + 1 correction row = WIDTH/2+2 rows, each
-// 2*WIDTH bits wide, already shifted into position. Their sum = a*b.
-//
-// Negative rows are formed as  ~(|d|*a)  and the "+1" needed to complete the
-// two's complement negation is collected into one extra correction row
-// (one bit per Booth digit). This avoids a separate negation adder per row.
-// All arithmetic is modulo 2^(2*WIDTH), which is exact because a*b < 2^(2*WIDTH).
-// ============================================================================
+// Radix 4 Booth partial product generator
 module booth_r4_ppgen #(
     parameter WIDTH = 8
 )(
@@ -17,13 +7,13 @@ module booth_r4_ppgen #(
     output wire [(WIDTH/2+2)*2*WIDTH-1:0]     rows   // NR rows of PW bits
 );
     localparam ND = WIDTH/2 + 1;   // Booth digits
-    localparam M  = 2*ND;          // zero-extended multiplier width
-    localparam PW = 2*WIDTH;
+    localparam M  = 2*ND;          // zero extended multiplier width
+    localparam PW = 2*WIDTH;       // Width of each partial product row
 
     // multiplier with zero extension on top and implicit b[-1] = 0 at bottom
     wire [M:0]    bx = {{(M-WIDTH){1'b0}}, b, 1'b0};
-    wire [PW-1:0] a1 = {{WIDTH{1'b0}}, a};   // 1*a
-    wire [PW-1:0] a2 = a1 << 1;              // 2*a
+    wire [PW-1:0] a1 = {{WIDTH{1'b0}}, a};   // A
+    wire [PW-1:0] a2 = a1 << 1;              // 2A
 
     wire [PW-1:0] corr_bits [0:ND];          // accumulates the +1 bits
     assign corr_bits[0] = {PW{1'b0}};
